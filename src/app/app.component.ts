@@ -31,11 +31,19 @@ export class AppComponent {
     // by using concatMap we wait for the observable to finish before
     // subsrcibing to the next one
     concatMap(async item => {
-      await this.download(item).then(res => {
-        console.log(res);
-        this.removeFromQueue(item);
-        return of(item);
-      });
+      // await this.download(item).then(res => {
+      //   console.log(res);
+      //   this.removeFromQueue(item);
+      //   return of(item);
+      // });
+
+      let downloadedItem = await this.download(item);
+
+      console.log(downloadedItem);
+
+      this.removeFromQueue(item);
+
+      return of(item);
     })
   );
 
