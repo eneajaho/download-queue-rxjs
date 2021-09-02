@@ -38,11 +38,8 @@ export class AppComponent {
       // });
 
       let downloadedItem = await this.download(item);
-
       console.log(downloadedItem);
-
       this.removeFromQueue(item);
-
       return of(item);
     })
   );
